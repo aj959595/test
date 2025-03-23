@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【绝密】妄想山海秘籍·策划看了会沉默</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            font-family: "Microsoft YaHei", sans-serif;
+            padding: 20px;
+            position: relative;
+            overflow: auto;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMjIyIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .text-container {
+            padding: 3rem 4rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ffd700;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin: 20px auto;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+            }
+            to {
+                box-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700;
+            }
+        }
+
+        .title {
+            color: #ffd700;
+            font-size: 3rem;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 0 10px #ffd700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Ma Shan Zheng', cursive;
+            letter-spacing: 4px;
+            position: relative;
+        }
+
+        .title::before, .title::after {
+            content: '★';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffd700;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .title::before {
+            left: -30px;
+        }
+
+        .title::after {
+            right: -30px;
+        }
+
+        .title:hover::before {
+            left: -20px;
+            opacity: 1;
+        }
+
+        .title:hover::after {
+            right: -20px;
+            opacity: 1;
+        }
+
+        .title:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px #ffd700;
+        }
+
+        .subtitle {
+            color: #ffd700;
+            text-align: center;
+            font-size: 1.4rem;
+            margin: 1.5rem 0;
+            font-family: 'Ma Shan Zheng', cursive;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        .content {
+            display: none;
+            color: #fff;
+            white-space: pre-line;
+            line-height: 2;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+        }
+
+        .content.show {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 4px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: #ffed4a;
+        }
+
+        .section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border-left: 3px solid #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .section-title {
+            color: #ffd700;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-family: 'Ma Shan Zheng', cursive;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        .final-note {
+            color: #ffd700;
+            font-style: italic;
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .text-container {
+                padding: 1.5rem;
+                margin: 10px auto;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        <h1 class="title" onclick="toggleContent()">妄想山海变强秘籍</h1>
+        <div class="subtitle">双手结印 口中念诀</div>
+        <div class="content" id="content">
+《山海胡来真经》
+——策划看了连夜改代码的野狐禅秘籍
+
+一、异兽速成篇
+"喂它三斤螺蛳粉，鲲鹏秒变窜天猴！"
+凌晨三点抓耳鼠，套上粉色比基尼
+先喂十串臭豆腐，再塞半箱脑白金
+对天大喊"真香定律"，异兽进化成扫地机器人
+
+二、捏脸玄学篇
+"鼻孔拉到后脑勺，系统送你屠龙刀！"
+身高调到负两米，体型捏成煤气罐
+眼距拉开银河系，下巴尖过避雷针
+系统误判外星人，解锁隐藏款"伏羲秃头皮肤"
+
+三、战斗邪道篇
+"平底锅反弹核弹，钓鱼竿钓走BOSS！"
+手持马桶刷当光剑，灵韵全镶老干妈
+星宿连点"拼多多砍价阵"，暴击概率翻888倍
+被揍时高唱《爱情买卖》，敌方全员强制跳广场舞
+
+四、建造鬼才篇
+"房子倒盖接地府，装修惊动女娲娘娘！"
+房顶铺满尖叫鸡，围墙全用珍珠奶茶
+厨房摆十台ATM机，卧室放三百个尖叫鸡
+触发隐藏副本《地府装修大赛》，奖励SSR级孟婆汤
+
+五、氪金玄学篇
+"充值前先倒立，648变6块8！"
+抽卡前摸策划照片，卡池必出SSR裂空座
+半夜给客服发《大悲咒》，系统错乱送满级麒麟
+交易行挂99个臭袜子，自动兑换顶级神话装备
+
+终极奥义口诀
+"中山广场倒立拉稀，全服喊你爸爸！"
+（注：本秘籍需配合螺蛳粉味香薰使用，走火入魔者将永久解锁成就——【策划の噩梦】）
+
+（郑重声明：按此操作被封号者，可凭本秘籍截图向女娲申请复活币一枚）</div>
+    </div>
+
+    <script>
+        function toggleContent() {
+            const content = document.getElementById('content');
+            if (content.classList.contains('show')) {
+                location.reload();
+            } else {
+                content.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html> 
